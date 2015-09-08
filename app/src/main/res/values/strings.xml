@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Calculadora</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_option1">Calculadora real</string>
+    <string-array name="operationsArray">
+        <item>Suma</item>
+        <item>Resta</item>
+        <item>Multiplica</item>
+        <item>Divide</item>
+    </string-array>
+    <string name="title_activity_calculadora_real">CalculadoraRealActivity</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
