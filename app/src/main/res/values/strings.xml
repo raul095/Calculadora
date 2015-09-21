@@ -3,9 +3,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_option1">Calculadora real</string>
-
-
-
     <string-array name="operationsArray">
         <item>Suma</item>
         <item>Resta</item>
