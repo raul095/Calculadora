@@ -18,13 +18,14 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 
+    Calculadora calculadora;
     //Atributos para los elementos graficos de la interfaz de usuario
     TextView textViewRes;
     Button buttonCalcula;
     Spinner spinnerOperation;
     TextView editTextFirst;
     TextView editTextSecond;
-    public enum Operaciones{Suma, Resta, Multiplica, Divide};
+    public enum Operaciones{Suma, Resta, Multiplica, Divide}
 
     /**
      * Metodo que se llama cada vez que la Activity se crea
@@ -34,6 +35,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        calculadora = new Calculadora();
+        //Asignamos los componentes graficos
         textViewRes = (TextView) findViewById(R.id.textViewRes);
         buttonCalcula = (Button) findViewById(R.id.buttonCalcula);
         spinnerOperation = (Spinner) findViewById(R.id.spinnerOperation);
@@ -99,7 +102,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     public void onClick(View v) {
         //Comprobamos que elemento ha llamado
         if(v.getId()==R.id.buttonCalcula){
-            Log.d("Debug", "Boton pulsado");
+            Log.v("Test", "Boton pulsado");
             Toast.makeText(this,"Operacion realizada", Toast.LENGTH_SHORT).show();
             textViewRes.setText(calcula());
 
@@ -122,23 +125,23 @@ public class MainActivity extends Activity implements View.OnClickListener{
             return res;
         }else{
             //Obtenemos los valores numericos de los operaderos
-            op1 = Double.parseDouble(editTextFirst.getText().toString());
-            op2 = Double.parseDouble(editTextSecond.getText().toString());
+            calculadora.setOperador1(Double.parseDouble(editTextFirst.getText().toString()));
+            calculadora.setOperador2(Double.parseDouble(editTextSecond.getText().toString()));
             //Sacamos el tipo de operacion seleccionada por el usuario
             Operaciones op = Operaciones.valueOf(spinnerOperation.getSelectedItem().toString());
 
             switch(op){
                 case Suma:
-                    res= ""+(op1+op2);
+                    res= ""+calculadora.suma();
                     break;
                 case Resta:
-                    res= ""+(op1-op2);
+                    res= ""+calculadora.resta();
                     break;
                 case Divide:
-                    res = ""+(op1/op2);
+                    res = ""+calculadora.divide();
                     break;
                 case Multiplica:
-                    res = ""+(op1*op2);
+                    res = ""+calculadora.multiplica();
                     break;
                 default:
                     res="Otras operaciones no soportadas";
